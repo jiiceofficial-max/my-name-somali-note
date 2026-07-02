@@ -1,14 +1,52 @@
-lib/
- ├── main.dart
- ├── screens/
- │    ├── home.dart
- │    ├── add_note.dart
- │    ├── edit_note.dart
- │    ├── settings.dart
- ├── models/
- │    └── note.dart
- ├── services/
- │    ├── firebase_service.dart
- │    └── local_database.dart
- ├── widgets/
- └── theme/
+import 'package:flutter/material.dart';
+import 'screens/home_screen.dart';
+
+void main() {
+  runApp(const SomaliNoteApp());
+}
+
+class SomaliNoteApp extends StatelessWidget {
+  const SomaliNoteApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Somali Note',
+      theme: ThemeData(
+        useMaterial3: true,
+        colorSchemeSeed: Colors.blue,
+      ),
+      home: const HomeScreen(),
+    );
+  }
+}import 'package:flutter/material.dart';
+
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Somali Note"),
+        centerTitle: true,
+      ),
+      body: const Center(
+        child: Text(
+          "Ku soo dhawoow Somali Note",
+          style: TextStyle(
+            fontSize: 22,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          // Halkan waxaa laga furi doonaa Add Note
+        },
+        child: const Icon(Icons.add),
+      ),
+    );
+  }
+}
