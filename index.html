@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="so">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Somali Note</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #121212; color: white; padding: 20px; margin: 0; }
+        .container { max-width: 500px; background: #1e1e1e; padding: 20px; border-radius: 8px; margin: 20px auto; box-shadow: 0px 4px 10px rgba(0,0,0,0.3); }
+        h2 { text-align: center; color: #40a9ff; margin-top: 0; }
+        textarea { width: 100%; height: 100px; margin-bottom: 10px; background: #2a2a2a; color: white; border: 1px solid #444; padding: 10px; border-radius: 5px; box-sizing: border-box; resize: none; font-size: 16px; }
+        button { background: #40a9ff; color: white; border: none; padding: 12px; width: 100%; cursor: pointer; font-weight: bold; border-radius: 5px; font-size: 16px; }
+        button:hover { background: #1890ff; }
+        .notes-list { margin-top: 20px; }
+        .note-item { background: #2a2a2a; padding: 15px; margin-bottom: 10px; border-radius: 5px; border-left: 5px solid #40a9ff; display: flex; justify-content: space-between; align-items: center; }
+        .note-text { margin: 0; flex-grow: 1; padding-right: 10px; font-size: 15px; word-break: break-all; }
+        .delete-btn { background: #ff4d4f; color: white; border: none; padding: 6px 12px; font-size: 14px; border-radius: 4px; cursor: pointer; }
+        .delete-btn:hover { background: #d9363e; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Soomaali Note 📝</h2>
+    <textarea id="noteInput" placeholder="Halkan ku qor waxa aad ku fekerayso..."></textarea>
+    <button onclick="kaydiNote()">Kaydi Note-ka</button>
+
+    <div class="notes-list" id="notesList"></div>
+</div>
+
+<script>
+    // Qoraaladaan aniga ayaa kuugu soo daray si toos ah!
+    const tusaaleNotes = [
+        "Kani waa app-kaygii ugu horreeyey ee aan barto dhismihiisa! 😎",
+        "Somali Note - Waxaa si guul leh loogu dhisay abka TrebEdit.",
+        "Xusuusin: Maanta waxaan bilaabay barashada Coding-ka."
+    ];
+
+    document.addEventListener("DOMContentLoaded", () => {
+        // Haddii uu app-ku mar kowaad furmayo oo galku eber yahay, ku shub tusaalooyinka kor ku xusan
+        if (!localStorage.getItem("somali_notes")) {
+            localStorage.setItem("somali_notes", JSON.stringify(tusaaleNotes));
+        }
+        sooBandhigNotes();
+    });
+
+    function kaydiNote() {
+        let text = document.getElementById("noteInput").value;
+        if(text.trim() === "") {
+            alert("Fadlan meesha wax ku qor saaxiib!");
+            return;
+        }
+        
+        let notes = galkaNotes();
+        notes.push(text);
+        localStorage.setItem("somali_notes", JSON.stringify(notes));
+        
+        document.getElementById("noteInput").value = "";
+        sooBandhigNotes();
+    }
+
+    function galkaNotes() {
+        let notes = localStorage.getItem("somali_notes");
+        return notes ? JSON.parse(notes) : [];
+    }
+
+    function sooBandhigNotes() {
+        let notesList = document.getElementById("notesList");
+        notesList.innerHTML = "";
+        
+        let notes = galkaNotes();
+        
+        notes.forEach((text, index) => {
+            let div = document.createElement("div");
+            div.className = "note-item";
+            
+            let p = document.createElement("p");
+            p.className = "note-text";
+            p.innerText = text;
+            div.appendChild(p);
+            
+            let delBtn = document.createElement("button");
+            delBtn.innerText = "Tirtir";
+            delBtn.className = "delete-btn";
+            delBtn.onclick = function() { tirtirNote(index); };
+            
+            div.appendChild(delBtn);
+            notesList.appendChild(div);
+        });
+    }
+
+    function tirtirNote(index) {
+        let notes = galkaNotes();
+        notes.splice(index, 1);
+        localStorage.setItem("somali_notes", JSON.stringify(notes));
+        sooBandhigNotes();
+    }
+</script>
+
+</body>
+</html>
+
