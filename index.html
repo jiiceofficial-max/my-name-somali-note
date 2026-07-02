@@ -1,70 +1,26 @@
-import 'package:flutter/material.dart';
-
-void main() {
-  runApp(const SomaliNote());
-}
-
-class SomaliNote extends StatelessWidget {
-  const SomaliNote({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: "Somali Note",
-      theme: ThemeData(
-        useMaterial3: true,
-        colorSchemeSeed: Colors.indigo,
-      ),
-      home: const HomePage(),
-    );
-  }
-}
-
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Somali Note"),
-        centerTitle: true,
-        actions: const [
-          Padding(
-            padding: EdgeInsets.all(8),
-            child: Icon(Icons.search),
-          ),
-        ],
-      ),
-      body: ListView(
-        padding: const EdgeInsets.all(16),
-        children: [
-          Card(
-            elevation: 5,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(18),
-            ),
-            child: const ListTile(
-              leading: CircleAvatar(
-                child: Icon(Icons.note_alt),
-              ),
-              title: Text(
-                "Ku soo dhawoow Somali Note",
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
-              subtitle: Text(
-                "Qor fikradahaaga si ammaan ah oo qurux badan.",
-              ),
-            ),
-          ),
-        ],
-      ),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: () {},
-        icon: const Icon(Icons.add),
-        label: const Text("Note Cusub"),
-      ),
-    );
-  }
-}
+<!DOCTYPE html>
+<html lang="so">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jiice Note Pro</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background: #121212; color: white; padding: 20px; }
+        .header { font-size: 24px; font-weight: bold; margin-bottom: 20px; text-align: center; }
+        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .box { background: #1e1e1e; padding: 20px; border-radius: 20px; text-align: center; border: 1px solid #333; cursor: pointer; transition: 0.3s; }
+        .box:active { background: #333; }
+        .icon { font-size: 35px; display: block; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+    <div class="header">Jiice Note Pro</div>
+    <div class="grid">
+        <div class="box" onclick="alert('Furayaa Qaybta Sawirada...')"><span class="icon">📸</span>Image</div>
+        <div class="box" onclick="alert('Furayaa Qaybta Farshaxanka...')"><span class="icon">🎨</span>Drawing</div>
+        <div class="box" onclick="window.location.href='text_editor.html'"><span class="icon">📝</span>Text</div>
+        <div class="box" onclick="alert('Furayaa Qaybta Liiska...')"><span class="icon">📋</span>List</div>
+    </div>
+    <div class="box" style="margin-top: 15px;" onclick="alert('Furayaa Qaybta Codka...')"><span class="icon">🎙️</span>Voice Note</div>
+</body>
+</html>
