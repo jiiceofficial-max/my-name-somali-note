@@ -1,29 +1,28 @@
 import 'package:flutter/material.dart';
-import 'screens/home_screen.dart';
 
 void main() {
-  runApp(const SomaliNoteApp());
+  runApp(const SomaliNote());
 }
 
-class SomaliNoteApp extends StatelessWidget {
-  const SomaliNoteApp({super.key});
+class SomaliNote extends StatelessWidget {
+  const SomaliNote({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Somali Note',
+      title: "Somali Note",
       theme: ThemeData(
         useMaterial3: true,
-        colorSchemeSeed: Colors.blue,
+        colorSchemeSeed: Colors.indigo,
       ),
-      home: const HomeScreen(),
+      home: const HomePage(),
     );
   }
-}import 'package:flutter/material.dart';
+}
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -31,21 +30,40 @@ class HomeScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text("Somali Note"),
         centerTitle: true,
-      ),
-      body: const Center(
-        child: Text(
-          "Ku soo dhawoow Somali Note",
-          style: TextStyle(
-            fontSize: 22,
-            fontWeight: FontWeight.bold,
+        actions: const [
+          Padding(
+            padding: EdgeInsets.all(8),
+            child: Icon(Icons.search),
           ),
-        ),
+        ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          // Halkan waxaa laga furi doonaa Add Note
-        },
-        child: const Icon(Icons.add),
+      body: ListView(
+        padding: const EdgeInsets.all(16),
+        children: [
+          Card(
+            elevation: 5,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(18),
+            ),
+            child: const ListTile(
+              leading: CircleAvatar(
+                child: Icon(Icons.note_alt),
+              ),
+              title: Text(
+                "Ku soo dhawoow Somali Note",
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+              subtitle: Text(
+                "Qor fikradahaaga si ammaan ah oo qurux badan.",
+              ),
+            ),
+          ),
+        ],
+      ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: () {},
+        icon: const Icon(Icons.add),
+        label: const Text("Note Cusub"),
       ),
     );
   }
