@@ -2,23 +2,20 @@
 <html lang="so">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jiice Note</title>
+    <title>Somali Note</title>
     <style>
-        body { font-family: sans-serif; background: #121212; color: white; padding: 20px; }
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        .box { background: #1e1e1e; padding: 20px; border-radius: 15px; text-align: center; border: 1px solid #333; }
-        .icon { font-size: 30px; display: block; margin-bottom: 10px; }
+        body { background-color: #121212; color: white; font-family: sans-serif; text-align: center; padding: 20px; }
+        .card { background-color: #1e1e1e; padding: 20px; margin: 20px; border-radius: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.3); }
     </style>
 </head>
 <body>
-    <h2>Jiice Note</h2>
-    <div class="grid">
-        <div class="box"><span class="icon">📸</span>Image</div>
-        <div class="box"><span class="icon">🎨</span>Drawing</div>
-        <div class="box"><span class="icon">📝</span>Text</div>
-        <div class="box"><span class="icon">📋</span>List</div>
+    <h1>Somali Note</h1>
+    <div class="card">
+        <h2>Ku soo dhawoow Somali Note</h2>
+        <p>Qor fikradahaaga si ammaan ah.</p>
     </div>
-    <div class="box" style="margin-top: 15px;"><span class="icon">🎙️</span>Voice Note</div>
+    <button onclick="alert('Note Cusub ayaa la furayaa!')" style="padding: 15px 30px; font-size: 18px; border-radius: 20px; border: none; background: #2196F3; color: white;">
+        Note Cusub
+    </button>
 </body>
 </html>
